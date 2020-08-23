@@ -1,4 +1,4 @@
-import {ADD, SUB, ADD2} from "./actionTypes";
+import {ADD, SUB, ADD2, ADD_NUMBER} from "./actionTypes";
 
 export function add() {
     return {
@@ -9,6 +9,21 @@ export function add() {
 export function sub() {
     return {
         type: SUB
+    }
+}
+
+export function addNumber(number) {
+    return {
+        type: ADD_NUMBER,
+        payload: number
+    }
+}
+
+export function asyncAdd(number) {
+    return (dispatch) => {
+        setTimeout(() => {
+            dispatch(addNumber(number))
+        }, 3000)
     }
 }
 

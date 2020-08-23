@@ -12,7 +12,10 @@ const loggerMiddleware = store => next => action => {
     return result
 }
 
-const store = createStore(rootReducer, applyMiddleware(loggerMiddleware))
+const store = createStore(rootReducer, applyMiddleware(
+    loggerMiddleware,
+    reduxThunk
+))
 
 ReactDOM.render(
     <Provider store={store}>

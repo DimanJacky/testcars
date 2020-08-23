@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Cars from "./Cars";
 import {connect} from 'react-redux'
-import {add, sub} from "./redux/actions/actions";
+import {add, sub, asyncAdd, addNumber} from "./redux/actions/actions";
 
 class App extends Component {
 
@@ -15,6 +15,7 @@ class App extends Component {
           <div>
             <button onClick={this.props.onAdd}>Add</button>
             <button onClick={this.props.onSub}>Sub</button>
+              <button onClick={() => this.props.onAsyncAdd(100)}>Asynk 100</button>
           </div>
           <Cars cars = {this.props.cars} />
         </div>
@@ -34,7 +35,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onAdd: () => dispatch(add()),
-    onSub: () => dispatch(sub())
+    onSub: () => dispatch(sub()),
+    onAsyncAdd: number => dispatch(asyncAdd(number)),
   }
 }
 
