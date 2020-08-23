@@ -1,15 +1,33 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux'
+import {add2} from "./redux/actions/actions";
 
 class Car extends Component {
 
     render() {
-
+        console.log(this.props)
         const {name, year} = this.props
 
         return (
-            <div>{name} {year}</div>
+            <div>
+                {name} {year} {this.props.counterTwo}
+                <button onClick={this.props.onAdd2}>Add</button>
+            </div>
         )
     }
 }
 
-export default Car
+function mapStateToProps(state) {
+    return {
+        counterTwo: state.counter2.counter2,
+        counterone: state.counter1.counter
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onAdd2: () => dispatch(add2())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Car)
