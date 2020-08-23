@@ -12,8 +12,9 @@ export function sub() {
     }
 }
 
-export function add2() {
+export function add2(number) {
     return {
-        type: ADD2
+        type: ADD2,
+        param: number
     }
 }

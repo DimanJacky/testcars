@@ -8,7 +8,7 @@ export default function counter2(state = initialState, action) {
     switch (action.type) {
         case ADD2:
             return {
-                counter2: state.counter2 + 1
+                counter2: state.counter2 + action.param
             }
         default:
             return state

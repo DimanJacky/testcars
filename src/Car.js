@@ -11,7 +11,7 @@ class Car extends Component {
         return (
             <div>
                 {name} {year} {this.props.counterTwo}
-                <button onClick={this.props.onAdd2}>Add</button>
+                <button onClick={() => this.props.onAdd2(18)}>Add</button>
             </div>
         )
     }
@@ -26,7 +26,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onAdd2: () => dispatch(add2())
+        onAdd2: (number) => dispatch(add2(number))
     }
 }
 
