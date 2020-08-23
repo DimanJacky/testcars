@@ -5,7 +5,7 @@ import {add2} from "./redux/actions/actions";
 class Car extends Component {
 
     render() {
-        console.log(this.props)
+
         const {name, year} = this.props
 
         return (
