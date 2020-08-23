@@ -12,10 +12,17 @@ const loggerMiddleware = store => next => action => {
     return result
 }
 
-const store = createStore(rootReducer, applyMiddleware(
+const composeEnhancers =
+    typeof window === 'object' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+            // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+        }) : compose;
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(
     loggerMiddleware,
     reduxThunk
-))
+)))
 
 ReactDOM.render(
     <Provider store={store}>
